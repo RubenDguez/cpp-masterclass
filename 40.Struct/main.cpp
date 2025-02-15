@@ -16,7 +16,16 @@ struct Student
     bool enrolled = true;
 };
 
-void printStudentInfo(Student s);
+struct Car
+{
+    string make;
+    string model;
+    int year;
+    string color;
+};
+
+void printStudentInfo(Student student);
+void printCarInfo(Car &car);
 
 int main()
 {
@@ -35,12 +44,41 @@ int main()
     {
         printStudentInfo(classroom[i]);
     }
+
+    Car dealer[2];
+    dealer[0].make = "Ford";
+    dealer[0].model = "Mustang";
+    dealer[0].year = 2025;
+    dealer[0].color = "Black";
+
+    dealer[1].make = "Chevrolet";
+    dealer[1].model = "Corvette";
+    dealer[1].year = 2023;
+    dealer[1].color = "Red";
+
+    for (int i = 0; i < sizeof(dealer) / sizeof(dealer[0]); i++)
+    {
+        std::cout << &dealer[i] << '\n';
+        printCarInfo(dealer[i]);
+    }
 }
 
-void printStudentInfo(Student s)
+// Pass struct by value
+void printStudentInfo(Student student)
 {
-    std::cout << "Name......: " << s.name << '\n';
-    std::cout << "GPA.......: " << s.gpa << '\n';
-    std::cout << "Enrolled..: " << ((s.enrolled) ? "True" : "False") << '\n';
+    std::cout << "Name......: " << student.name << '\n';
+    std::cout << "GPA.......: " << student.gpa << '\n';
+    std::cout << "Enrolled..: " << ((student.enrolled) ? "True" : "False") << '\n';
+    std::cout << '\n';
+}
+
+// Pass struct by reference
+void printCarInfo(Car &car)
+{
+    std::cout << &car << '\n';
+    std::cout << "Make...: " << car.make << '\n';
+    std::cout << "Model..: " << car.model << '\n';
+    std::cout << "Year...: " << car.year << '\n';
+    std::cout << "Color..: " << car.color << '\n';
     std::cout << '\n';
 }
