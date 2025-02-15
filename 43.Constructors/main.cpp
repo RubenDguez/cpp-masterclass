@@ -1,4 +1,9 @@
 #include "Student.h"
+#include "Pizza.h"
+
+#include <iostream>
+
+using std::string;
 
 int main()
 {
@@ -13,6 +18,11 @@ int main()
     {
         school[i].toString();
     }
+
+    string toppings[2] = {"Pepperoni", "Cheese"};
+    int size = sizeof(toppings) / sizeof(toppings[0]);
+    Pizza pizza1 = Pizza(toppings);
+    pizza1.printToppings(size);
     
     return 0;
 }
